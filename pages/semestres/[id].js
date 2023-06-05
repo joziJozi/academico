@@ -12,40 +12,47 @@ const form = () => {
   const { push, query } = useRouter()
   const { register, handleSubmit, setValue } = useForm()
 
+
+
   useEffect(() => {
     if (query.id) {
-      const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas'))
-      const disciplina = disciplinas[query.id]
-      for(let atributo in disciplina){
-        setValue(atributo, disciplina[atributo])
+      const semestres = JSON.parse(window.localStorage.getItem('semestres'))
+      const semestre = semestres[query.id]
+      for(let atributo in semestre){
+        setValue(atributo, semestre[atributo])
       }
 
-      setValue('nome', disciplina.nome)
-      setValue('curso', disciplina.curso)
+      setValue('nome', semestre.nome)
+      setValue('data inicio', semestre.datainicio)
+      setValue('data fim', semestre.datafim)
     }
   }, [query.id])
   console.log(query.id);
 
   function salvar(dados) {
-    const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas')) || []
-    disciplinas.splice(query.id, 1, dados)
-    window.localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
-    push('/disciplinas')
+    const semestres = JSON.parse(window.localStorage.getItem('semestres')) || []
+    semestres.splice(query.id, 1, dados)
+    window.localStorage.setItem('semestres', JSON.stringify(semestres))
+    push('/semestres')
   }
   return (
-    <Pagina titulo='Disciplinas'>
+    <Pagina titulo='Semestres'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
           <Form.Control type="text" {...register('nome')} />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="curso">
-          <Form.Label>Curso:</Form.Label>
-          <Form.Control type="text" {...register('curso')} />
+        <Form.Group className="mb-3" controlId="datainicio">
+          <Form.Label>Data inicio:</Form.Label>
+          <Form.Control type="text" {...register('datainicio')} />
         </Form.Group>
-        
+        <Form.Group className="mb-3" controlId="datafim">
+          <Form.Label>Data fim:</Form.Label>
+          <Form.Control type="text"{...register('datafim')} />
+        </Form.Group>
+
         <div className='text-center'>
-          <Link className=' btn btn-danger' href='/disciplinas'>
+          <Link className=' btn btn-danger' href='/semestres'>
             <AiFillStepBackward className='me-2' />
             Voltar
           </Link>

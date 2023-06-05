@@ -12,40 +12,47 @@ const form = () => {
   const { push, query } = useRouter()
   const { register, handleSubmit, setValue } = useForm()
 
+
+
   useEffect(() => {
     if (query.id) {
-      const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas'))
-      const disciplina = disciplinas[query.id]
-      for(let atributo in disciplina){
-        setValue(atributo, disciplina[atributo])
+      const salas = JSON.parse(window.localStorage.getItem('salas'))
+      const sala = salas[query.id]
+      for(let atributo in sala){
+        setValue(atributo, sala[atributo])
       }
 
-      setValue('nome', disciplina.nome)
-      setValue('curso', disciplina.curso)
+      setValue('nome', sala.nome)
+      setValue('capacidade', sala.capacidade)
+      setValue('tipo', sala.tipo)
     }
   }, [query.id])
   console.log(query.id);
 
   function salvar(dados) {
-    const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas')) || []
-    disciplinas.splice(query.id, 1, dados)
-    window.localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
-    push('/disciplinas')
+    const salas = JSON.parse(window.localStorage.getItem('salas')) || []
+    salas.splice(query.id, 1, dados)
+    window.localStorage.setItem('salas', JSON.stringify(salas))
+    push('/salas')
   }
   return (
-    <Pagina titulo='Disciplinas'>
+    <Pagina titulo='Formulário'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
           <Form.Control type="text" {...register('nome')} />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="curso">
-          <Form.Label>Curso:</Form.Label>
-          <Form.Control type="text" {...register('curso')} />
+        <Form.Group className="mb-3" controlId="capacidade">
+          <Form.Label>Capacidade:</Form.Label>
+          <Form.Control type="text" {...register('capacidade')} />
         </Form.Group>
-        
+        <Form.Group className="mb-3" controlId="tipo">
+          <Form.Label>Tipo:</Form.Label>
+          <Form.Control type="text"{...register('tipo')} />
+        </Form.Group>
+
         <div className='text-center'>
-          <Link className=' btn btn-danger' href='/disciplinas'>
+          <Link className=' btn btn-danger' href='/salas'>
             <AiFillStepBackward className='me-2' />
             Voltar
           </Link>

@@ -8,53 +8,57 @@ import { AiFillEdit } from "react-icons/ai";
 import Link from 'next/link';
 const index = () => {
 
-  const [disciplinas, setDisciplinas] = useState([])
+  const [semestres, Setsemestres] = useState([])
 
   useEffect(() => {
-    setDisciplinas(getAll())
+    Setsemestres(getAll())
 
   }, [])
 
   function getAll() {
-    return JSON.parse(window.localStorage.getItem('disciplinas')) || []
+    return JSON.parse(window.localStorage.getItem('semestres')) || []
   }
 
   function excluir(id) {
     if (confirm('Deseja realmente excluir o registro?')) {
       const itens = getAll()
       itens.splice(id, 1)
-      window.localStorage.setItem('disciplinas', JSON.stringify(itens))
-      setDisciplinas(itens)
+      window.localStorage.setItem('semestres', JSON.stringify(itens))
+      Setsemestres(itens)
     }
   }
   return (
-    <Pagina titulo='Disciplinas'>
+    <Pagina titulo='Semestres'>
 
-      <Button href='/disciplinas/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
+      <Button href='/semestres/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 
       <Table striped bordered hover className='text-center'>
         <thead>
           <tr>
             <th>Alterar/Excluir</th>
             <th>Nome</th>
-            <th>Curso</th>
+            <th>Data inicio</th>
+            <th>Data fim</th>
           </tr>
         </thead>
         <tbody>
 
-          {disciplinas.map((item, i) => (
+
+          {semestres.map((item, i) => (
             <tr key={i}>
               <td>
-                <Link href={'/disciplinas/' + i}>
+                <Link href={'/semestres/' + i}>
                 <Button variant='light' className='ms-2'><AiFillEdit  className="primary" /></Button>
                 </Link>
                 <Button variant='light' className='ms-2' ><AiFillDelete onClick={() => excluir(i)} className="text-danger" /></Button></td>
               <td>{item.nome}</td>
-              <td>{item.curso}</td>
+              <td>{item.datainicio}</td>
+              <td>{item.datafim}</td>
             </tr>
           ))}
 
         </tbody>
+
 
       </Table>
     </Pagina>
