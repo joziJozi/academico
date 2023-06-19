@@ -12,7 +12,7 @@ import { AiFillStepForward } from "react-icons/ai";
 const form = () => {
 
   const { push } = useRouter()
-  const { register, handleSubmit, formState:{errors} } = useForm()
+  const { register, handleSubmit, formState:{errors}, setValue } = useForm()
 
   function salvar(dados) {
 
@@ -21,12 +21,23 @@ const form = () => {
 
    console.log(dados);
   }
+
+  function handleChange(event) {
+    const name = event.target.name
+    const valor = event.target.value
+    const mascara = event.target.getAttribute('mask')
+    setValue(name, mask(valor, mascara));
+  }
   return (
     <Pagina titulo='Disciplinas'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register('nome', cursoValidator.nome)} />
+          <Form.Control 
+          maxLength={80}
+          type="text" 
+          {...register('nome', cursoValidator.nome)}
+           isInvalid={errors.nome}  />
           {
              errors.nome &&
             <small className='mt-1 '>{errors.nome.message}</small>
@@ -34,7 +45,11 @@ const form = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="curso">
           <Form.Label>Curso:</Form.Label>
-          <Form.Control isInvalid={errors.curso} type="text" {...register('curso', cursoValidator.curso)} />
+          <Form.Control 
+          maxLength={50}
+          type="text"
+          {...register('curso', cursoValidator.curso)}
+          isInvalid={errors.curso}  />
           {
              errors.curso &&
             <small className='mt-1 '>{errors.curso.message}</small>

@@ -11,7 +11,7 @@ import { AiFillStepForward } from "react-icons/ai";
 const form = () => {
 
   const { push } = useRouter()
-  const { register, handleSubmit, formState:{errors} } = useForm()
+  const { register, handleSubmit, formState:{errors}, setValue } = useForm()
 
   function salvar(dados) {
     const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
@@ -19,12 +19,23 @@ const form = () => {
     window.localStorage.setItem('cursos', JSON.stringify(cursos))
     push('/cursos')
   }
+
+  function handleChange(event) {
+    const name = event.target.name
+    const valor = event.target.value
+    const mascara = event.target.getAttribute('mask')
+    setValue(name, mask(valor, mascara));
+  }
   return (
     <Pagina titulo='Formulário'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register('nome', cursoValidator.nome)} />
+          <Form.Control 
+          maxLength={80}
+          type="text"
+          {...register('nome', cursoValidator.nome)}
+          isInvalid={errors.nome}  />
           {
              errors.nome &&
             <small className='mt-1 '>{errors.nome.message}</small>
@@ -32,7 +43,12 @@ const form = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="duracao">
           <Form.Label>Duração:</Form.Label>
-          <Form.Control isInvalid={errors.duracao} type="text" {...register('duracao', cursoValidator.duracao)} />
+          <Form.Control
+          mask='5555'
+          maxLength={4}
+          type="text"
+          {...register('duracao', cursoValidator.duracao)}
+          isInvalid={errors.duracao} />
           {
              errors.duracao &&
             <small className='mt-1'>{errors.duracao.message}</small>
@@ -40,7 +56,11 @@ const form = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="modalidade">
           <Form.Label>Modalidade:</Form.Label>
-          <Form.Control isInvalid={errors.modalidade} type="text"{...register('modalidade', cursoValidator.modalidade)} />
+          <Form.Control 
+          maxLength={15}
+          type="text"
+          {...register('modalidade', cursoValidator.modalidade)}
+          isInvalid={errors.modalidade}  />
           {
              errors.modalidade &&
             <small className='mt-1'>{errors.modalidade.message}</small>

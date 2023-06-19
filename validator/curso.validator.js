@@ -7,7 +7,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 80'
       },
     },
   
@@ -19,7 +19,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 4'
       },
     },
   
@@ -27,7 +27,7 @@ const cursoValidator = {
       required: 'Campo Obrigatório', 
       minLength: {
         value: 3,
-        message: 'o mínimo é 3'
+        message: 'o mínimo é 15'
       },
       maxLength: {
         value: 10,
@@ -42,7 +42,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 14'
       },
     },
     matricula: {
@@ -53,7 +53,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 11'
       },
     },
     salario: {
@@ -64,7 +64,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 100'
       },
     },
     email: {
@@ -75,7 +75,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 50'
       },
     },
     telefone: {
@@ -86,7 +86,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 15'
       },
     },
     cep: {
@@ -108,7 +108,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 20'
       },
     },
     complemento: {
@@ -119,7 +119,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 5'
       },
     },
     numero: {
@@ -130,7 +130,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 4'
       },
     },
     bairro: {
@@ -141,7 +141,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 20'
       },
     },
     capacidade: {
@@ -152,7 +152,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 11'
       },
     },
     tipo: {
@@ -163,7 +163,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 10'
+        message: 'o máximo é 50'
       },
     },
     datainicio: {
