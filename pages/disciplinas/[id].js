@@ -26,8 +26,7 @@ const form = () => {
        })
     }
   }, [query.id])
-  console.log(query.id);
-
+  
   function salvar(dados) {
     axios.put('/api/disciplinas' + query.id, dados)
     push('/disciplinas')
