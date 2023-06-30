@@ -6,11 +6,12 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import { AiFillStepBackward } from "react-icons/ai";
 import { AiFillStepForward } from "react-icons/ai";
+import cursoValidator from '@/validator/curso.validator';
 
 const form = () => {
 
   const { push, query } = useRouter()
-  const { register, handleSubmit, setValue } = useForm()
+  const { register, handleSubmit, formState:{errors},  setValue } = useForm()
 
 
 
@@ -35,20 +36,52 @@ const form = () => {
     window.localStorage.setItem('cursos', JSON.stringify(cursos))
     push('/cursos')
   }
+  function handleChange(event) {
+    const name = event.target.name
+    const valor = event.target.value
+    const mascara = event.target.getAttribute('mask')
+    setValue(name, mask(valor, mascara));
+  }
   return (
-    <Pagina titulo='Formulário'>
+    <Pagina titulo='Avaliação'>
       <Form>
-        <Form.Group className="mb-3" controlId="nome">
+      <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" {...register('nome')} />
+          <Form.Control 
+          maxLength={80}
+          type="text"
+          {...register('nome', cursoValidator.nome)}
+          isInvalid={errors.nome}  />
+          {
+             errors.nome &&
+            <small className='mt-1'>{errors.nome.message}</small>
+          }
         </Form.Group>
         <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Duração:</Form.Label>
-          <Form.Control type="text" {...register('duracao')} />
+          <Form.Label>Data:</Form.Label>
+          <Form.Control
+          mask='99/99/9999'
+          maxLength={10}
+          type="text"
+          {...register('duracao', cursoValidator.duracao)}
+          onChange={handleChange}
+          isInvalid={errors.duracao} />
+          {
+             errors.duracao &&
+            <small className='mt-1'>{errors.duracao.message}</small>
+          }
         </Form.Group>
         <Form.Group className="mb-3" controlId="modalidade">
           <Form.Label>Modalidade:</Form.Label>
-          <Form.Control type="text"{...register('modalidade')} />
+          <Form.Control 
+          maxLength={15}
+          type="text"
+          {...register('modalidade', cursoValidator.modalidade)}
+          isInvalid={errors.modalidade}  />
+          {
+             errors.modalidade &&
+            <small className='mt-1'>{errors.modalidade.message}</small>
+          }
         </Form.Group>
 
         <div className='text-center'>

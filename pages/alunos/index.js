@@ -28,7 +28,7 @@ const index = () => {
     }
   }
   return (
-    <Pagina titulo='Alunos'>
+    <Pagina titulo='Matricule-se'>
 
       <Button href='/alunos/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 

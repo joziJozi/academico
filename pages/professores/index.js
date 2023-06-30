@@ -28,7 +28,7 @@ const index = () => {
     }
   }
   return (
-    <Pagina titulo='Professores'>
+    <Pagina titulo='Seja nosso Colaborador!'>
 
       <Button href='/professores/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 
@@ -38,8 +38,6 @@ const index = () => {
             <th>Alterar/Excluir</th>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Matricula</th>
-            <th>Salário</th>
             <th>E-mail</th>
             <th>Telefone</th>
             <th>CEP</th>
@@ -62,8 +60,6 @@ const index = () => {
                 <Button variant='light' className='ms-2' ><AiFillDelete onClick={() => excluir(i)} className="text-danger" /></Button></td>
               <td>{item.nome}</td>
               <td>{item.cpf}</td>
-              <td>{item.matricula}</td>
-              <td>{item.salario}</td>
               <td>{item.email}</td>
               <td>{item.telefone}</td>
               <td>{item.cep}</td>

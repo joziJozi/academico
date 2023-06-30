@@ -1,42 +1,26 @@
 import Pagina from '@/components/Pagina'
+import cursoValidator from '@/validator/curso.validator';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import { AiFillStepBackward } from "react-icons/ai";
 import { AiFillStepForward } from "react-icons/ai";
-import cursoValidator from '@/validator/curso.validator';
 import { mask } from 'remask';
 
 const form = () => {
 
-  const { push, query } = useRouter()
-  const { register, handleSubmit,formState:{errors}, setValue } = useForm()
-
-
-
-  useEffect(() => {
-    if (query.id) {
-      const semestres = JSON.parse(window.localStorage.getItem('semestres'))
-      const semestre = semestres[query.id]
-      for(let atributo in semestre){
-        setValue(atributo, semestre[atributo])
-      }
-
-      setValue('nome', semestre.nome)
-      setValue('data inicio', semestre.datainicio)
-      setValue('data fim', semestre.datafim)
-    }
-  }, [query.id])
-  console.log(query.id);
+  const { push } = useRouter()
+  const { register, handleSubmit, formState:{errors}, setValue } = useForm()
 
   function salvar(dados) {
-    const semestres = JSON.parse(window.localStorage.getItem('semestres')) || []
-    semestres.splice(query.id, 1, dados)
-    window.localStorage.setItem('semestres', JSON.stringify(semestres))
-    push('/semestres')
+    const eventos = JSON.parse(window.localStorage.getItem('eventos')) || []
+    eventos.push(dados)
+    window.localStorage.setItem('eventos', JSON.stringify(eventos))
+    push('/eventos')
   }
+
   function handleChange(event) {
     const name = event.target.name
     const valor = event.target.value
@@ -44,9 +28,9 @@ const form = () => {
     setValue(name, mask(valor, mascara));
   }
   return (
-    <Pagina titulo='Plano-Musculação'>
+    <Pagina titulo='Eventos'>
       <Form>
-      <Form.Group className="mb-3" controlId="nome">
+        <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
           <Form.Control 
           maxLength={80}
@@ -96,15 +80,26 @@ const form = () => {
             <small className='mt-1 '>{errors.valor.message}</small>
           }
         </Form.Group>
+        <Form.Group className="mb-3" controlId="tipodeevento">
+          <Form.Label>Tipo de Evento:</Form.Label>
+          <Form.Control mask='aaaaaaaaaa'
+          type="text"
+          {...register('tipodeevento', cursoValidator.tipodeevento)}
+          isInvalid={errors.tipodeevento}  />
+          {
+             errors.tipodeevento &&
+            <small className='mt-1 '>{errors.tipodeevento.message}</small>
+          }
+        </Form.Group>
 
         <div className='text-center'>
-          <Link className=' btn btn-danger' href='/semestres'>
-            <AiFillStepBackward className='me-2' />
-            Voltar
+          <Link className=' btn btn-danger' href='/eventos'>
+          <AiFillStepBackward className='me-2'/>
+          Voltar
           </Link>
-          <Button variant='primary' className='ms-2' onClick={handleSubmit(salvar)}>
-            <AiFillStepForward className='me-2' />
-            Salvar
+          <Button variant='primary'  className='ms-2' onClick={handleSubmit(salvar)}>
+          <AiFillStepForward className='me-2'/>
+          Salvar
           </Button>
         </div>
 

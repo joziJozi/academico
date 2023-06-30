@@ -28,7 +28,7 @@ const index = () => {
     }
   }
   return (
-    <Pagina titulo='Semestres'>
+    <Pagina titulo='Plano-Musculação'>
 
       <Button href='/semestres/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 
@@ -39,6 +39,7 @@ const index = () => {
             <th>Nome</th>
             <th>Data inicio</th>
             <th>Data fim</th>
+            <th>Valor</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,7 @@ const index = () => {
               <td>{item.nome}</td>
               <td>{item.datainicio}</td>
               <td>{item.datafim}</td>
+              <td>{item.valor}</td>
             </tr>
           ))}
 

@@ -13,7 +13,7 @@ const form = () => {
 
   const { push } = useRouter()
   const { register, handleSubmit, formState:{errors}, setValue } = useForm()
-
+  
   function salvar(dados) {
     const professores = JSON.parse(window.localStorage.getItem('professores')) || []
     professores.push(dados)
@@ -28,7 +28,7 @@ const form = () => {
     setValue(name, mask(valor, mascara));
   }
   return (
-    <Pagina titulo='Professores'>
+    <Pagina titulo='Seja nosso Colaborador!'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -56,33 +56,7 @@ const form = () => {
             <small className='mt-1 '>{errors.cpf.message}</small>
           }
         </Form.Group>
-        <Form.Group className="mb-3" controlId="matricula">
-          <Form.Label>Matricula:</Form.Label>
-          <Form.Control
-           mask='99999999999'
-           maxLength={11} 
-           type="text"
-           {...register('matricula', cursoValidator.matricula)}
-           onChange={handleChange}
-           isInvalid={errors.matricula}  />
-          {
-             errors.matricula &&
-            <small className='mt-1 '>{errors.matricula.message}</small>
-          }
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="matricula">
-          <Form.Label>Salário:</Form.Label>
-          <Form.Control 
-          maxLength={100}
-          type="text"
-          {...register('salario', cursoValidator.salario)}
-          isInvalid={errors.salario}  />
-          {
-             errors.salario &&
-            <small className='mt-1 '>{errors.salario.message}</small>
-          }
-        </Form.Group>
-
+      
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>E-mail:</Form.Label>
           <Form.Control  

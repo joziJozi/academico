@@ -6,8 +6,8 @@ const cursoValidator = {
         message: 'o mínimo é 3'
       },
       maxLength: {
-        value: 10,
-        message: 'o máximo é 80'
+        value: 30,
+        message: 'o máximo é 30'
       },
     },
   
@@ -19,7 +19,7 @@ const cursoValidator = {
       },
       maxLength: {
         value: 10,
-        message: 'o máximo é 4'
+        message: 'o máximo é 10'
       },
     },
   
@@ -38,21 +38,21 @@ const cursoValidator = {
       required: 'Campo Obrigatório', 
       minLength: {
         value: 3,
-        message: 'o mínimo é 3'
+        message: 'o mínimo é 14'
       },
       maxLength: {
-        value: 10,
+        value: 14,
         message: 'o máximo é 14'
       },
     },
     matricula: {
       required: 'Campo Obrigatório', 
       minLength: {
-        value: 3,
-        message: 'o mínimo é 3'
+        value: 11,
+        message: 'o mínimo é 11'
       },
       maxLength: {
-        value: 10,
+        value: 14,
         message: 'o máximo é 11'
       },
     },
@@ -71,10 +71,10 @@ const cursoValidator = {
       required: 'Campo Obrigatório', 
       minLength: {
         value: 3,
-        message: 'o mínimo é 3'
+        message: 'o mínimo é 20'
       },
       maxLength: {
-        value: 10,
+        value: 50,
         message: 'o máximo é 50'
       },
     },
@@ -82,10 +82,10 @@ const cursoValidator = {
       required: 'Campo Obrigatório', 
       minLength: {
         value: 3,
-        message: 'o mínimo é 3'
+        message: 'o mínimo é 10'
       },
       maxLength: {
-        value: 10,
+        value: 15,
         message: 'o máximo é 15'
       },
     },
@@ -107,7 +107,7 @@ const cursoValidator = {
         message: 'o mínimo é 3'
       },
       maxLength: {
-        value: 10,
+        value: 20,
         message: 'o máximo é 20'
       },
     },
@@ -118,18 +118,18 @@ const cursoValidator = {
         message: 'o mínimo é 3'
       },
       maxLength: {
-        value: 10,
+        value: 5,
         message: 'o máximo é 5'
       },
     },
     numero: {
       required: 'Campo Obrigatório', 
       minLength: {
-        value: 3,
-        message: 'o mínimo é 3'
+        value: 2,
+        message: 'o mínimo é 2'
       },
       maxLength: {
-        value: 10,
+        value: 4,
         message: 'o máximo é 4'
       },
     },
@@ -140,7 +140,7 @@ const cursoValidator = {
         message: 'o mínimo é 3'
       },
       maxLength: {
-        value: 10,
+        value: 20,
         message: 'o máximo é 20'
       },
     },
@@ -199,7 +199,29 @@ const cursoValidator = {
         message: 'o máximo é 10'
       },
     },
+    valor: {
+      required: 'Campo Obrigatório', 
+      minLength: {
+        value: 3,
+        message: 'o mínimo é 3'
+      },
+      maxLength: {
+        value: 10,
+        message: 'o máximo é 10'
+      },
+    },
    
+    tipodeevento: {
+      required: 'Campo Obrigatório', 
+      minLength: {
+        value: 3,
+        message: 'o mínimo é 3'
+      },
+      maxLength: {
+        value: 50,
+        message: 'o máximo é 50'
+      },
+    },
   }
   
   export default cursoValidator

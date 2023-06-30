@@ -29,7 +29,7 @@ const form = () => {
   }
 
   return (
-    <Pagina titulo='Alunos'>
+    <Pagina titulo='Matricule-se'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -59,19 +59,20 @@ const form = () => {
           }
         </Form.Group>
         <Form.Group className="mb-3" controlId="matricula">
-          <Form.Label>Matricula:</Form.Label>
+          <Form.Label>Matrícula: </Form.Label>
           <Form.Control
-           mask='99999999999'
-           maxLength={11} 
-           type="text"
-           {...register('matricula', cursoValidator.matricula)}
-           onChange={handleChange}
-           isInvalid={errors.matricula} />
+            mask='999999999999'
+            {...register('matricula', cursoValidator.matricula)}
+            onChange={handleChange}
+            isInvalid={errors.matricula}
+            type="text" />
+
           {
-            errors.matricula &&
-            <small className='mt-1 '>{errors.matricula.message}</small>
+            errors.cpf &&
+            <small className='mt-1 '>{errors.cpf.message}</small>
           }
         </Form.Group>
+  
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>E-mail:</Form.Label>
           <Form.Control 

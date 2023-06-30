@@ -28,7 +28,7 @@ const form = () => {
     setValue(name, mask(valor, mascara));
   }
   return (
-    <Pagina titulo='Semestres'>
+    <Pagina titulo='Plano-Musculação'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -66,6 +66,18 @@ const form = () => {
           {
              errors.datafim &&
             <small className='mt-1 '>{errors.datafim.message}</small>
+          }
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="valor">
+          <Form.Label>Valor:</Form.Label>
+          <Form.Control mask='R$99999'
+          maxLength={10}
+          type="text"
+          {...register('valor', cursoValidator.valor)}
+          isInvalid={errors.valor}  />
+          {
+             errors.valor &&
+            <small className='mt-1 '>{errors.valor.message}</small>
           }
         </Form.Group>
 

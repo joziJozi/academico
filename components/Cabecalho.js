@@ -6,14 +6,17 @@ const Cabecalho = () => {
     <>
       <Navbar bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="/academico">Acadêmico</Navbar.Brand>
+        <Navbar.Brand href="/academico">
+        <img src={'https://www.sescdf.com.br/SiteAssets/marca-sesc-df1/Nova_marca_Sesc_horizontal_CMYK_negativa-01.png'} alt="image.logo.png" style={{ height: '30px', width: 'auto', marginTop: '10px', marginBottom: '10px' }} />
+        </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/cursos">Cursos</Nav.Link>
-            <Nav.Link href="/disciplinas">Disciplinas</Nav.Link>
-            <Nav.Link href="/alunos">Alunos</Nav.Link>
-            <Nav.Link href="/professores">Professores</Nav.Link>
-            <Nav.Link href="/salas">Salas</Nav.Link>
-            <Nav.Link href="/semestres">Semestre</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/cursos">Avaliação</Nav.Link>
+            <Nav.Link href="/alunos">Matricule-se</Nav.Link>
+            <Nav.Link href="/professores">Seja nosso Colaborador</Nav.Link>
+            <Nav.Link href="/sobrenos">Sobre nós</Nav.Link>
+            <Nav.Link href="/semestres">Plano-Musculação</Nav.Link>
+            <Nav.Link href="/eventos">Eventos</Nav.Link>
            
           </Nav>
         </Container>

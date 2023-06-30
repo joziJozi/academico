@@ -16,27 +16,27 @@ const form = () => {
 
   useEffect(() => {
     if (query.id) {
-      const salas = JSON.parse(window.localStorage.getItem('salas'))
-      const sala = salas[query.id]
-      for(let atributo in sala){
-        setValue(atributo, sala[atributo])
+      const sobre = JSON.parse(window.localStorage.getItem('sobre'))
+      const sobrenos = sobre[query.id]
+      for(let atributo in sobrenos){
+        setValue(atributo, sobrenos[atributo])
       }
 
-      setValue('nome', sala.nome)
-      setValue('capacidade', sala.capacidade)
-      setValue('tipo', sala.tipo)
+      setValue('nome', sobrenos.nome)
+      setValue('capacidade', sobrenos.capacidade)
+      setValue('tipo', sobrenos.tipo)
     }
   }, [query.id])
   console.log(query.id);
 
   function salvar(dados) {
-    const salas = JSON.parse(window.localStorage.getItem('salas')) || []
-    salas.splice(query.id, 1, dados)
-    window.localStorage.setItem('salas', JSON.stringify(salas))
-    push('/salas')
+    const sobre = JSON.parse(window.localStorage.getItem('sobre')) || []
+    sobre.splice(query.id, 1, dados)
+    window.localStorage.setItem('sobre', JSON.stringify(sobre))
+    push('/sobre')
   }
   return (
-    <Pagina titulo='Formulário'>
+    <Pagina titulo='Sobre nós'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -52,7 +52,7 @@ const form = () => {
         </Form.Group>
 
         <div className='text-center'>
-          <Link className=' btn btn-danger' href='/salas'>
+          <Link className=' btn btn-danger' href='/sobre'>
             <AiFillStepBackward className='me-2' />
             Voltar
           </Link>

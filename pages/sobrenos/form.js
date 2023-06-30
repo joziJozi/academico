@@ -15,10 +15,10 @@ const form = () => {
   const { register, handleSubmit, formState:{errors}, setValue } = useForm()
 
   function salvar(dados) {
-    const salas = JSON.parse(window.localStorage.getItem('salas')) || []
-    salas.push(dados)
-    window.localStorage.setItem('salas', JSON.stringify(salas))
-    push('/salas')
+    const sobre = JSON.parse(window.localStorage.getItem('sobre')) || []
+    sobre.push(dados)
+    window.localStorage.setItem('sobre', JSON.stringify(sobre))
+    push('/sobrenos')
   }
 
   function handleChange(event) {
@@ -28,7 +28,7 @@ const form = () => {
     setValue(name, mask(valor, mascara));
   }
   return (
-    <Pagina titulo='Formulário'>
+    <Pagina titulo='Sobre nós'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -68,7 +68,7 @@ const form = () => {
         </Form.Group>
 
         <div className='text-center'>
-          <Link className=' btn btn-danger' href='/salas'>
+          <Link className=' btn btn-danger' href='/sobre'>
           <AiFillStepBackward className='me-2'/>
           Voltar
           </Link>

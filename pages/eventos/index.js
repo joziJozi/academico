@@ -8,52 +8,56 @@ import { AiFillEdit } from "react-icons/ai";
 import Link from 'next/link';
 const index = () => {
 
-  const [salas, setSalas] = useState([])
+  const [eventos, Seteventos] = useState([])
 
   useEffect(() => {
-    setSalas(getAll())
+    Seteventos(getAll())
 
   }, [])
 
   function getAll() {
-    return JSON.parse(window.localStorage.getItem('salas')) || []
+    return JSON.parse(window.localStorage.getItem('eventos')) || []
   }
 
   function excluir(id) {
     if (confirm('Deseja realmente excluir o registro?')) {
       const itens = getAll()
       itens.splice(id, 1)
-      window.localStorage.setItem('salas', JSON.stringify(itens))
-      setSalas(itens)
+      window.localStorage.setItem('eventos', JSON.stringify(itens))
+      Seteventos(itens)
     }
   }
   return (
-    <Pagina titulo='Salas'>
+    <Pagina titulo='Eventos'>
 
-      <Button href='/salas/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
+      <Button href='/eventos/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 
       <Table striped bordered hover className='text-center'>
         <thead>
           <tr>
             <th>Alterar/Excluir</th>
             <th>Nome</th>
-            <th>Capacidade</th>
-            <th>Tipo</th>
+            <th>Data inicio</th>
+            <th>Data fim</th>
+            <th>Valor</th>
+            <th>Tipo de Evento</th>
           </tr>
         </thead>
         <tbody>
 
 
-          {salas.map((item, i) => (
+          {eventos.map((item, i) => (
             <tr key={i}>
               <td>
-                <Link href={'/salas/' + i}>
+                <Link href={'/eventos/' + i}>
                 <Button variant='light' className='ms-2'><AiFillEdit  className="primary" /></Button>
                 </Link>
                 <Button variant='light' className='ms-2' ><AiFillDelete onClick={() => excluir(i)} className="text-danger" /></Button></td>
               <td>{item.nome}</td>
-              <td>{item.capacidade}</td>
-              <td>{item.tipo}</td>
+              <td>{item.datainicio}</td>
+              <td>{item.datafim}</td>
+              <td>{item.valor}</td>
+              <td>{item.tipodeevento}</td>
             </tr>
           ))}
 

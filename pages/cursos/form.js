@@ -7,6 +7,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import { AiFillStepBackward } from "react-icons/ai";
 import { AiFillStepForward } from "react-icons/ai";
+import { mask } from 'remask';
 
 const form = () => {
 
@@ -27,7 +28,7 @@ const form = () => {
     setValue(name, mask(valor, mascara));
   }
   return (
-    <Pagina titulo='Formulário'>
+    <Pagina titulo='Avaliação'>
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -42,12 +43,13 @@ const form = () => {
           }
         </Form.Group>
         <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Duração:</Form.Label>
+          <Form.Label>Data:</Form.Label>
           <Form.Control
-          mask='5555'
-          maxLength={4}
+          mask='99/99/9999'
+          maxLength={10}
           type="text"
           {...register('duracao', cursoValidator.duracao)}
+          onChange={handleChange}
           isInvalid={errors.duracao} />
           {
              errors.duracao &&
