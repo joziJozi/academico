@@ -16,7 +16,7 @@ const Cabecalho = () => {
             <Nav.Link href="/professores">Seja nosso Colaborador</Nav.Link>
             <Nav.Link href="/sobrenos">Sobre nós</Nav.Link>
             <Nav.Link href="/semestres">Plano-Musculação</Nav.Link>
-            <Nav.Link href="/eventos">Eventos</Nav.Link>
+            <Nav.Link href="/empresa">Empresa</Nav.Link>
            
           </Nav>
         </Container>

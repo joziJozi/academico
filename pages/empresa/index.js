@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { BiPlusCircle } from "react-icons/bi";
@@ -7,52 +8,54 @@ import { AiFillEdit } from "react-icons/ai";
 import Link from 'next/link';
 const index = () => {
 
-  const [disciplinas, setdisciplinas] = useState([])
+  const [empresas, setempresas] = useState([])
 
   useEffect(() => {
-    setdisciplinas(getAll())
+    setempresas(getAll())
 
   }, [])
 
   function getAll() {
-    return JSON.parse(window.localStorage.getItem('disciplinas')) || []
+    return JSON.parse(window.localStorage.getItem('empresas')) || []
   }
 
   function excluir(id) {
     if (confirm('Deseja realmente excluir o registro?')) {
       const itens = getAll()
       itens.splice(id, 1)
-      window.localStorage.setItem('disciplinas', JSON.stringify(itens))
-      setdisciplinas(itens)
+      window.localStorage.setItem('empresas', JSON.stringify(itens))
+      setempresas(itens)
     }
   }
   return (
-    <Pagina titulo='Disciplinas'>
+    <Pagina titulo='Empresa'>
 
-      <Button href='/disciplinas/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
+      <Button href='/empresa/form' variant="dark mb-3"  >Novo <BiPlusCircle /></Button>{' '}
 
       <Table striped bordered hover className='text-center'>
         <thead>
           <tr>
             <th>Alterar/Excluir</th>
-            <th>Nome</th>
-            <th>Data</th>
-            <th>Modalidade</th>
+            <th>Razão Social:</th>
+            <th>CNPJ:</th>
+            <th>Endereço:</th>
+            <th>Telefone:</th>
           </tr>
         </thead>
         <tbody>
 
 
-          {disciplinas.map((item, i) => (
+          {empresas.map((item, i) => (
             <tr key={i}>
               <td>
-                <Link href={'/disciplinas/' + i}>
+                <Link href={'/empresa/' + i}>
                 <Button variant='light' className='ms-2'><AiFillEdit  className="primary" /></Button>
                 </Link>
                 <Button variant='light' className='ms-2' ><AiFillDelete onClick={() => excluir(i)} className="text-danger" /></Button></td>
-              <td>{item.nome}</td>
-              <td>{item.duracao}</td>
-              <td>{item.modalidade}</td>
+              <td>{item.razaosocial}</td>
+              <td>{item.cnpj}</td>
+              <td>{item.endereco}</td>
+              <td>{item.telefone}</td>
             </tr>
           ))}
 

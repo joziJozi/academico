@@ -81,12 +81,12 @@ const cursoValidator = {
     telefone: {
       required: 'Campo Obrigatório', 
       minLength: {
-        value: 3,
-        message: 'o mínimo é 10'
+        value: 14,
+        message: 'o mínimo é 14'
       },
       maxLength: {
-        value: 15,
-        message: 'o máximo é 15'
+        value: 14,
+        message: 'o máximo é 14'
       },
     },
     cep: {
@@ -220,6 +220,39 @@ const cursoValidator = {
       maxLength: {
         value: 50,
         message: 'o máximo é 50'
+      },
+    },
+    razaosocial: {
+      required: 'Campo Obrigatório', 
+      minLength: {
+        value: 10,
+        message: 'o mínimo é 10'
+      },
+      maxLength: {
+        value: 80,
+        message: 'o máximo é 80'
+      },
+    },
+    cnpj: {
+      required: 'Campo Obrigatório', 
+      minLength: {
+        value: 14,
+        message: 'o mínimo é 14'
+      },
+      maxLength: {
+        value: 18,
+        message: 'o máximo é 18'
+      },
+    },
+    endereco: {
+      required: 'Campo Obrigatório', 
+      minLength: {
+        value: 20,
+        message: 'o mínimo é 20'
+      },
+      maxLength: {
+        value: 30,
+        message: 'o máximo é 30'
       },
     },
   }
